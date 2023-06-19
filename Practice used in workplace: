@@ -1,0 +1,36 @@
+-- Create games table if it does not exist
+CREATE TABLE IF NOT EXISTS games (
+    game_id INT PRIMARY KEY,
+    bowler_id INT,
+    date DATE,
+    venue VARCHAR(50)
+);
+
+-- Create frames table if it does not exist
+CREATE TABLE IF NOT EXISTS frames (
+    frame_id INT PRIMARY KEY,
+    game_id INT,
+    frame_number INT,
+    ball1 INT,
+    ball2 INT,
+    ball3 INT
+);
+
+-- Insert sample data into games table
+INSERT INTO games (game_id, bowler_id, date, venue)
+VALUES (1, 1, '2021-05-01', 'Century Lanes 1'),
+       (2, 2, '2021-05-02', 'SpareTimes 2');
+
+-- Insert sample data into frames table
+INSERT INTO frames (frame_id, game_id, frame_number, ball1, ball2, ball3)
+VALUES (1, 1, 1, 6, 3, NULL),
+       (2, 1, 2, 9, 1, NULL),
+       (3, 1, 3, 10, NULL, NULL),
+       (4, 2, 1, 5, 4, NULL),
+       (5, 2, 2, 8, 2, NULL);
+
+-- Query to retrieve bowlers, games, and scores
+SELECT b.name AS bowler_name, g.date, g.venue, f.frame_number, f.ball1, f.ball2, f.ball3
+FROM bowlers b
+JOIN games g ON b.bowler_id = g.bowler_id
+JOIN frames f ON g.game_id = f.game_id;
