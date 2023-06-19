@@ -1,0 +1,7 @@
+// This program was created by John Doe
+
+include <iostream>
+
+int main() {
+    std::cout << "Hello, World!" << std::endl;
+    return 0;
