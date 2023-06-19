@@ -1,0 +1,52 @@
+def display_menu():
+    print("Practice by Robert B.")
+    print("Welcome to my Theater!")
+    print("1. View Movies")
+    print("2. Buy Tickets")
+    print("3. Exit")
+
+def view_movies(movies):
+    print("Available Movies:")
+    for movie in movies:
+        print(f"- {movie}")
+
+def buy_tickets(movies):
+    print("Select a movie:")
+    for index, movie in enumerate(movies):
+        print(f"{index+1}. {movie}")
+    
+    choice = int(input("Enter the movie number: "))
+    if choice < 1 or choice > len(movies):
+        print("Invalid choice!")
+        return
+
+    selected_movie = movies[choice - 1]
+    num_tickets = int(input("Enter the number of tickets: "))
+
+    # Code to process ticket purchase and payment
+
+    print(f"You have successfully purchased {num_tickets} ticket(s) for {selected_movie}.")
+
+def box_office():
+    movies = ["Movie 1", "Movie 2", "Movie 3"]  # Example list of available movies
+
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-3): ")
+
+        if choice == "1":
+            view_movies(movies)
+        elif choice == "2":
+            buy_tickets(movies)
+        elif choice == "3":
+            print("Thank you for visiting the Box Office!")
+            break
+        else:
+            print("Invalid choice! Please try again.")
+
+if __name__ == "__main__":
+    box_office()
+
+
+    
+
