@@ -1,0 +1,6 @@
+SELECT 'Hello, world!' AS sentence
+UNION ALL
+SELECT '
+'
+UNION ALL
+SELECT 'Created by: Robert B.' AS sentence;
