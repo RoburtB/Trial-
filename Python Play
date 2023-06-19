@@ -1,0 +1,80 @@
+import pygame
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Game window dimensions
+width = 500
+height = 700
+
+# Colors
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+# Create the game window
+window = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Happy Bird")
+
+# Game variables
+bird_x = 50
+bird_y = 250
+bird_size = 20
+bird_velocity = 0
+gravity = 0.5
+jump_height = 8
+gap_size = 150
+pipe_width = 50
+pipe_velocity = 3
+
+score = 0
+font = pygame.font.SysFont(None, 30)
+
+# Load images
+bird_image = pygame.image.load("bird.png")
+pipe_image = pygame.image.load("pipe.png")
+
+# Game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                bird_velocity = -jump_height
+
+    # Update bird position and velocity
+    bird_y += bird_velocity
+    bird_velocity += gravity
+
+    # Update pipe position
+    pipe_x -= pipe_velocity
+
+    # Check collision with the pipe
+    if bird_y < 0 or bird_y + bird_size > height or (bird_x + bird_size > pipe_x and bird_x < pipe_x + pipe_width
+                                                    and (bird_y < pipe_height or bird_y + bird_size > pipe_height + gap_size)):
+        # Game over
+        running = False
+
+    # Check if the pipe has passed the bird
+    if pipe_x + pipe_width < bird_x:
+        score += 1
+
+    # Draw game objects
+    window.fill(black)
+    window.blit(bird_image, (bird_x, bird_y))
+    window.blit(pipe_image, (pipe_x, pipe_height))
+    pygame.display.update()
+
+# Game over screen
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+    # Display final score
+    text = font.render("Game Over! Score: ")
+    
+    print("Editor Robert B.")
