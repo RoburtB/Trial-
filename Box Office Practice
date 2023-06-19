@@ -1,0 +1,66 @@
+import java.util.Scanner;
+ 
+public class BoxOffice {
+    private static void displayMenu() {
+        System.out.println("Welcome to My Theater!");
+        System.out.println("1. View Movies");
+        System.out.println("2. Buy Tickets");
+        System.out.println("3. Exit");
+           System.out.println();  // Add a line of space
+        System.out.println("Sample created by Robert B.");
+    }
+
+    private static void viewMovies(String[] movies) {
+        System.out.println("Available Movies:");
+        for (String movie : movies) {
+            System.out.println("- " + movie);
+        }
+    }
+
+    private static void buyTickets(String[] movies) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select a movie:");
+        for (int i = 0; i < movies.length; i++) {
+            System.out.println((i + 1) + ". " + movies[i]);
+        }
+
+        int choice = scanner.nextInt();
+        if (choice < 1 || choice > movies.length) {
+            System.out.println("Invalid choice!");
+            return;
+        }
+
+        String selectedMovie = movies[choice - 1];
+        System.out.println("Enter the number of tickets: ");
+        int numTickets = scanner.nextInt();
+
+        // Code to process ticket purchase and payment
+
+        System.out.println("You have successfully purchased " + numTickets + " ticket(s) for " + selectedMovie + ".");
+    }
+
+    public static void main(String[] args) {
+        String[] movies = {"Movie 1", "Movie 2", "Movie 3"};
+
+        while (true) {
+            displayMenu();
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt();
+
+            if (choice == 1) {   System.out.println();  
+    
+                viewMovies(movies);
+            } else if (choice == 2) {
+                buyTickets(movies);
+            } else if (choice == 3) {
+                System.out.println("Thank you for visiting the Box Office!");
+                break;
+            } else {
+                System.out.println("Invalid choice! Please try again.");
+                
+                
+            }
+        }
+    }
+ 
+}
