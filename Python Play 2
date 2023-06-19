@@ -1,0 +1,40 @@
+import pygame
+except ModuleNotFoundError:
+    import subprocess
+    import sys
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "pygame"])
+import pygame
+
+# Initialize Pygame
+pygame.init()
+
+# Game window dimensions
+width = 700
+height = 300
+
+# Colors
+black = (0, 0, 0)
+white = (255, 255, 255)
+
+# Create the game window
+window = pygame.display.set_mode((width, height))
+pygame.display.set_caption("Pong")
+
+# Paddle variables
+paddle_width = 10
+paddle_height = 60
+paddle_speed = 9
+
+# Ball variables
+ball_size = 10
+ball_x = width // 2
+ball_y = height // 2
+ball_dx = 3
+ball_dy = 3
+
+# Create the paddles
+paddle_left = pygame.Rect(50, height // 2 - paddle_height // 2, paddle_width, paddle_height)
+paddle_right = pygame.Rect(width - 50 - paddle_width, height // 2 - paddle_height // 2, paddle_width,)
+
+    
+print("Editor Robert B.")
